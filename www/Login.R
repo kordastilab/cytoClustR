@@ -31,9 +31,9 @@ output$uiLogin <- renderUI({
       column(width = 6,
         #wellPanel(
           h4(strong("Please enter your Cytobank credential")),
-          textInput("userName", labelMandatory("Username:"), width = "250px", value="shahram.kordasti@kcl.ac.uk"),
+          textInput("userName", labelMandatory("Username:"), width = "250px", value=""),
           br(),
-          passwordInput("passwd", labelMandatory("Password:"), width="250px", value="SK6969yk"),
+          passwordInput("passwd", labelMandatory("Password:"), width="250px", value=""),
           hr(),
           h5("or alternatively paste an authentication token below"),
           textAreaInput("cytoToken", "Authentication token", "", width = "350px", height = "100px"),
