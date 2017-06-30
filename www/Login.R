@@ -38,7 +38,7 @@ output$uiLogin <- renderUI({
           h5("or alternatively paste an authentication token below"),
           textAreaInput("cytoToken", "Authentication token", "", width = "350px", height = "100px"),
           br(),
-          textInput("userSite", labelMandatory("Cytobank site:"), width = "250px", value="mrc"),
+          textInput("userSite", labelMandatory("Cytobank site:"), width = "250px", value=""),
           hr(),
           actionButton("Login", "Log in", class = "btn-primary", style="color: #fff; background-color: #337ab7; border-color: #2e6da4"),
           br(),
