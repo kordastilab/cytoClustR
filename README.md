@@ -1,6 +1,6 @@
 # cytoClusteR #
 
-cytoClusteR employs hierarchical clustering to identify cell population in SPADE data and facilitates comparisons among multiple groups of samples.
+cytoClusteR employs hierarchical clustering to identify cell population in SPADE data and facilitate comparisons among multiple groups of samples.
 
 cytoClusteR was developed by the Kordasti lab at King's College London.
 
