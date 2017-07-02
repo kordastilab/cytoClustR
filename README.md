@@ -2,7 +2,7 @@
 
 cytoClusteR employs hierarchical clustering to identify cell population in SPADE data and facilitates comparisons among multiple groups of samples.
 
-HotNet2 was developed by the Kordasti lab at King's College London.
+cytoClusteR was developed by the Kordasti lab at King's College London.
 
 ### Setup ###
 
