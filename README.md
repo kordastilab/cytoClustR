@@ -29,8 +29,8 @@ This may take a minute. Keep an eye on R's console in case any dependencies need
 * **Manual input**. Use `Single-sample mode` or `Multiple-sample mode` to load SPADE data directly without logging in to Cytobank. In each tab you can select among multiple options while importing your input:
     1. **Input file:** Your SPADE table.
     2. **Marker cleaning file:** File to clean raw column names as exported from SPADE. See [`example_data/needed_columns.xlsx`](https://github.com/kordastilab/cytocluster/blob/master/example_data/needed_columns.xlsx).
-    3. **Filter by cell count:** Set the minimum `cell count` for SPADE clusters to be included in the analysis.
-    4. **Filter by percenttotal:** Set the minimum `percent total` for SPADE clusters to be included in the analysis.
+    3. **Filter by cell count:** Set the minimum `cell count` for SPADE nodes to be included in the analysis.
+    4. **Filter by percenttotal:** Set the minimum `percent total` for SPADE nodes to be included in the analysis.
     5. **Data transformation:** Set the transformation method. For now only `arcsinh` is available. Default co-factor is 5 - remember to change it if different value was used during your SPADE analysis.
 
 * In `Multiple-sample mode` you need to define the directory with the SPADE files of each group you want to import.
