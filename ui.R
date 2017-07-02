@@ -3,16 +3,16 @@ source("dependencies.R")
 
 
 shinyUI(
-  
+
   dashboardPage(
-    
+
     ## Header
     skin="blue",
     dashboardHeader(
       title = "cytoClusteR",
       titleWidth = 200
     ),## End header
-    
+
     ## Sidebar
     dashboardSidebar(
       width = 200,
@@ -27,11 +27,11 @@ shinyUI(
         menuItem("Contact us", tabName = "contact", icon=icon("envelope-o"))
       )
     ), ## End sidebar
-    
+
     ## Main body
     dashboardBody(
       tabItems(
-        
+
         ## Cytologin
         tabItem(tabName = "cytologin",
                 div(class = "login",
@@ -51,8 +51,8 @@ shinyUI(
                     column(width=4,
                            uiOutput("cytoLogged")
                     )),
-                  
-                  
+
+
                   br(),
                   uiOutput("submitSpade_header"),
                   rHandsontableOutput("all_spades", width = "100%", height = "100%"),
@@ -70,18 +70,18 @@ shinyUI(
                   uiOutput("markersToClusterCyto")
                 )
         ), ## End Cytologin
-        
+
         ## Sample tags
         tabItem("sampleTags",
                 actionButton("submitSampleTags", "Push sample tags",
-                             icon("cloud-upload"), 
+                             icon("cloud-upload"),
                              style="color: #fff; background-color: #337ab7; border-color: #2e6da4"),
                 br(),
                 br(),
                 rHandsontableOutput("sampleTagstb", width = "100%", height = "100%")
-                
+
         ), ## End Sample tags
-        
+
         tabItem(tabName = "mimode",
                 tabsetPanel(
                   tabPanel("Single-sample mode",
@@ -108,7 +108,7 @@ shinyUI(
                            ),
                            br(),
                            actionButton("submitSSparams", "Select markers",
-                                        icon("columns"), 
+                                        icon("columns"),
                                         style="color: #fff; background-color: #337ab7; border-color: #2e6da4"),
                            hr(),
                            uiOutput("markersToClusterSS")
@@ -140,18 +140,18 @@ shinyUI(
                            rHandsontableOutput("dataGroups_tbs", width = "100%", height = "100%"),
                            hr(),
                            actionButton("submitMSparams", "Select markers",
-                                        icon("columns"), 
+                                        icon("columns"),
                                         style="color: #fff; background-color: #337ab7; border-color: #2e6da4"),
                            actionButton("saveCleanMSGroups", "Clean and Save",
-                                        icon("save"), 
+                                        icon("save"),
                                         style="color: #fff; background-color: #337ab7; border-color: #2e6da4"),
                            hr(),
                            uiOutput("markersToClusterMS")
                   )
                 )
         ),
-        
-        
+
+
         ## Hierarchical clustering
         tabItem(tabName = "hierclus",
                 tabsetPanel(
@@ -166,7 +166,7 @@ shinyUI(
                                      collapsed = TRUE,
                                      br(),
                                      textInput('mainHeatmapTitle', h4('Plot title:'), value = NULL),
-                                     tags$div(align = 'left', 
+                                     tags$div(align = 'left',
                                               class = 'multicol',
                                               uiOutput("markersToShow")),
                                      numericInput('mainHeatmapTitlefont', h4('Change title font size'), value = 16, step = 1),
@@ -177,7 +177,7 @@ shinyUI(
                                      uiOutput("columnToSort"),
                                      uiOutput("columnToAnnotate"),
                                      actionButton("mainHeatmapParams", "Update plot",
-                                                  icon("refresh"), 
+                                                  icon("refresh"),
                                                   style="color: #fff; background-color: #337ab7; border-color: #2e6da4")
                             )))),
                             uiOutput("groupPlotSelect"),
@@ -190,7 +190,7 @@ shinyUI(
                             sliderInput("colorBreaks", labe="Number of color breaks", min = 10, max = 50, step = 5, value = 10),
                             plotOutput("mainHeatmap",height = "100%")
                   ),
-                  
+
                   tabPanel("Forced group",
                            #h4("** To use this function please make sure you have created the plot of the reference group in the Plot tab"),
                            br(),
@@ -209,15 +209,15 @@ shinyUI(
                                        div(style="display:inline-block",numericInput('forcedHeatmapXfont', h4('X axis font size'), value = 12, step = 1))
                                     ),
                                     actionButton("forcedHeatmapParams", "Update plot",
-                                                 icon("refresh"), 
+                                                 icon("refresh"),
                                                  style="color: #fff; background-color: #337ab7; border-color: #2e6da4")
                                   )
                            ))),
-                           
+
                            h5("Select group to force heatmap"),
                            bootstrapPage(
                              div(style="display:inline-block",uiOutput("selectForcedGroup")),
-                             div(style="display:inline-block",actionButton("forceHeatmap", "Force heatmap",icon("gg"), 
+                             div(style="display:inline-block",actionButton("forceHeatmap", "Force heatmap",icon("gg"),
                                                                            style="color: #fff; background-color: #337ab7; border-color: #2e6da4"))
                            ),
                            br(),
@@ -229,9 +229,9 @@ shinyUI(
                            br(),
                            br(),
                            plotOutput("forcedHeatmap",height = "100%")
-                           
+
                   ),
-                  
+
                   tabPanel("Overlay groups",
                            br(),
                            fluidPage(
@@ -249,7 +249,7 @@ shinyUI(
                                             div(style="display:inline-block",numericInput('overlayHeatmapXfont', h4('X axis font size'), value = 12, step = 1))
                                           ),
                                           actionButton("overlayHeatmapParams", "Update plot",
-                                                       icon("refresh"), 
+                                                       icon("refresh"),
                                                        style="color: #fff; background-color: #337ab7; border-color: #2e6da4")
                                       )))),
                            bootstrapPage(
@@ -262,7 +262,7 @@ shinyUI(
                   )
               )
           ), ## End of hierarchical clustering
-        
+
         tabItem(tabName = "postproc",
                 tabsetPanel(
                   tabPanel("Select Markers",
@@ -281,9 +281,6 @@ shinyUI(
                                         textInput("marker3",  h4("Marker 3")),
                                         br(),
                                         h4("Heatmap:"),
-                                        h5("Note: When z-score >= 1 then level is set to High(H),
-                                          when z-score > -1 and < 1 then level is set to mean (M) and 
-                                          when z-score <= -1 then level is set to Low(L)"),
                                         textInput('postHeatmapTitle', h4('Plot title:'), value = NULL),
                                         numericInput('postHeatmapTitlefont', h4('Change title font size'), value = 16, step = 1),
                                         bootstrapPage(
@@ -292,10 +289,10 @@ shinyUI(
                                         ),
                                         br(),
                                         actionButton("postProc", "Go!",
-                                                    icon("line-chart"), 
+                                                    icon("line-chart"),
                                                     style="color: #fff; background-color: #337ab7; border-color: #2e6da4")
                                     )))),
-                           
+
                               downloadButton('downloadPostHeatmap', 'Download Plot'),
                               br(),
                               br(),
@@ -303,23 +300,23 @@ shinyUI(
                 )
               )
             ),
-        
+
         tabItem("nodeid",
                 actionButton("submitNodeGroups", "Push node groups",
-                             icon("cloud-upload"), 
+                             icon("cloud-upload"),
                              style="color: #fff; background-color: #337ab7; border-color: #2e6da4"),
                 br(),
                 br(),
                 rHandsontableOutput("nodeGroupstb", width = "100%", height = "100%")
-                
+
         )
-        
-        
-        
+
+
+
       )
     )## End main body
-    
+
   )## End dashboard page
-  
-  
+
+
 )
