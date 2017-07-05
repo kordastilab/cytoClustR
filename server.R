@@ -177,7 +177,10 @@ shinyServer(function(input, output, session) {
     spade.download_statistics_tables(v$cyto_session, spade=v$cyto_spade, directory = temp_dir)
     old_path = getwd()
     setwd(temp_dir)
-    system(paste0("unzip ", temp_dir, "/", spade_name, ".zip_statistics.zip"))
+    ## Change the file name in case it contains spaces
+    system("for f in *.zip; do mv \"$f\" \"${f// /}\"; done")
+    zipped_fn = list.files('.', pattern = ".zip_statistics.zip")
+    system(paste0("unzip ", temp_dir, "/", zipped_fn))
     setwd(old_path)
     
     fns = list.files(paste0(temp_dir, "/bySample"))
