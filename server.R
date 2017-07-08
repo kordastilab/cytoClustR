@@ -164,8 +164,16 @@ shinyServer(function(input, output, session) {
     js_string <- sub("SOMETHING",my_spade_check_test,js_string)
     session$sendCustomMessage(type='jsCode', list(value = js_string))
     
-    ## Get the spade object
-    spade_selected = hot_to_r(input$all_spades) %>% subset(Pick==TRUE)
+    ## Get the spade object (take the first if none is TRUE)
+    d = hot_to_r(input$all_spades)
+    if(sum(d$Pick)==0){
+      spade_selected = hot_to_r(input$all_spades) %>% slice(1)
+    }else if (sum(d$Pick)>1) {
+      spade_selected = hot_to_r(input$all_spades) %>% subset(Pick==TRUE) %>% slice(1)
+    }else if (sum(d$Pick)==1) {
+      spade_selected = hot_to_r(input$all_spades) %>% subset(Pick==TRUE)
+    }
+    
     
     ## Always analyse one spade - only the first is picked
     spade_idx = spade_selected$id[1]
