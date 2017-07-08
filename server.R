@@ -165,12 +165,12 @@ shinyServer(function(input, output, session) {
     session$sendCustomMessage(type='jsCode', list(value = js_string))
     
     ## Get the spade object (take the first if none is TRUE)
-    d = hot_to_r(input$all_spades)
-    if(sum(d$Pick)==0){
+    as = hot_to_r(input$all_spades)
+    if(sum(as$Pick)==0){
       spade_selected = hot_to_r(input$all_spades) %>% slice(1)
-    }else if (sum(d$Pick)>1) {
+    }else if (sum(as$Pick)>1) {
       spade_selected = hot_to_r(input$all_spades) %>% subset(Pick==TRUE) %>% slice(1)
-    }else if (sum(d$Pick)==1) {
+    }else if (sum(as$Pick)==1) {
       spade_selected = hot_to_r(input$all_spades) %>% subset(Pick==TRUE)
     }
     
@@ -349,7 +349,7 @@ shinyServer(function(input, output, session) {
                 n = read.xlsx(v$columnCorrectionInput$datapath, 1)[,1:2]
                 colnames(n) = c("row", "marker")
                 n = n %>% mutate(row=as.character(row))
-                
+
                 n$col = apply(n, 1, function(x){
                   grep(x[1], kept_cols$col, value = T)
                 })
