@@ -347,6 +347,7 @@ shinyServer(function(input, output, session) {
                 }
               }else if (!is.null(v$columnCorrectionInput)){
                 n = read.xlsx(v$columnCorrectionInput$datapath, 1)[,1:2]
+                print(n%>%str)
                 colnames(n) = c("row", "marker")
                 n = n %>% mutate(row=as.character(row))
 
@@ -370,6 +371,8 @@ shinyServer(function(input, output, session) {
                   colnames(d) = kept_cols$marker
                 }
               }
+              
+              d = d %>% data.frame()
               
               ## Take in other parameters as well
               #log2(d/co-factor + sqrt(1 + (d/co-factor)^2) )
