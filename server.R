@@ -347,7 +347,6 @@ shinyServer(function(input, output, session) {
                 }
               }else if (!is.null(v$columnCorrectionInput)){
                 n = read.xlsx(v$columnCorrectionInput$datapath, 1)[,1:2]
-                print(n%>%str)
                 colnames(n) = c("row", "marker")
                 n = n %>% mutate(row=as.character(row))
 
