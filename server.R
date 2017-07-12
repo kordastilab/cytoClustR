@@ -9,6 +9,7 @@ shinyServer(function(input, output, session) {
   
   ## reactive values
   v = reactiveValues(cyto_session=NULL, experiments=NULL, exp_id=NULL,
+                     spade_idx=NULL, spade_name=NULL,
                      sampleTags=NULL, cyto_spade=NULL, all_spades=NULL, 
                      cytoGroups=NULL,
                      dataGroups_tb = NULL, columnCorrectionInput=NULL,
@@ -93,7 +94,7 @@ shinyServer(function(input, output, session) {
           v$exp_id = unlist(v$experiments$id[v$experiments$experimentName==input$experiment])
           ## Get sample tags and store the tags in a variable
           ## Here create a temporary directory to save the s
-          temp_dir = "~/.cytocluster_temp"
+          temp_dir = "~/cytocluster_temp"
             if(dir.exists(temp_dir)){
             unlink(temp_dir, recursive = T, force = T)
           }
@@ -176,10 +177,10 @@ shinyServer(function(input, output, session) {
     
     
     ## Always analyse one spade - only the first is picked
-    spade_idx = spade_selected$id[1]
-    spade_name = spade_selected$name[1]
-    v$cyto_spade = spade.show(v$cyto_session, experiment_id = v$exp_id, spade_id = spade_idx)
-    temp_dir = "~/.cytocluster_temp"
+    v$spade_idx = spade_selected$id[1]
+    v$spade_name = spade_selected$name[1]
+    v$cyto_spade = spade.show(v$cyto_session, experiment_id = v$exp_id, spade_id = v$spade_idx)
+    temp_dir = "~/cytocluster_temp"
     dir.create(temp_dir)
     ## Download the statistics tables
     spade.download_statistics_tables(v$cyto_session, spade=v$cyto_spade, directory = temp_dir)
@@ -242,8 +243,8 @@ shinyServer(function(input, output, session) {
                   accept=NULL),
         fluidRow(
           column(4,
-                 numericInput('cellCountCyto', h4('Filter by cell count'), value = 0),
-                 numericInput('percentTotalCyto', h4('Filter by percenttotal'), value = 0)
+                 numericInput('cellCountCyto', h4('Filter by cell count'), value = -1),
+                 numericInput('percentTotalCyto', h4('Filter by percenttotal'), value = -1)
           ),
           column(4,
                  selectInput('scalingMethodCyto', h4('Data transformation'), c('None','arcsinh')),
@@ -386,10 +387,13 @@ shinyServer(function(input, output, session) {
               }
               
               ## Filters on cellCount and percentTotal
-              if("count"%in%colnames(d)){
+              if("count"%in%colnames(d) & v$cellCount>=0){
                 d = d %>% subset(count > v$cellCount)
+              }else if(v$cellCount == -1){
+                d[is.na(d)] = -1  
               }
-              if("percenttotal"%in%colnames(d)){
+              
+              if("percenttotal"%in%colnames(d) & v$percentTotal>=0){
                 d = d %>% subset(percenttotal > v$percentTotal)
               }
               
@@ -536,10 +540,13 @@ shinyServer(function(input, output, session) {
               }
                 
               ## Filters on cellCount and percentTotal
-              if("count"%in%colnames(d)){
+              if("count"%in%colnames(d) & v$cellCount>=0){
                 d = d %>% subset(count > v$cellCount)
+              }else if(v$cellCount == -1){
+                d[is.na(d)] = -1
               }
-              if("percenttotal"%in%colnames(d)){
+              
+              if("percenttotal"%in%colnames(d) & v$percentTotal>=0){
                 d = d %>% subset(percenttotal > v$percentTotal)
               }
               
@@ -582,7 +589,7 @@ shinyServer(function(input, output, session) {
       return()
     }else{
       ## Get file names
-      temp_dir = "~/.cytocluster_temp/bySample/"
+      temp_dir = "~/cytocluster_temp/bySample/"
       fns = list.files(temp_dir)
       rhandsontable(data.frame(file=fns, group=rep("", length(fns)))) %>%
         hot_table(highlightCol = TRUE, highlightRow = TRUE)
@@ -599,7 +606,7 @@ shinyServer(function(input, output, session) {
       
       ## Trasnfer the files to new directories
       ## First delete the previous groups
-      temp_dir = "~/.cytocluster_temp/"
+      temp_dir = "~/cytocluster_temp/"
       dir_ns = list.dirs(temp_dir)
       dir_ns = dir_ns[2:length(dir_ns)] ## Parent directory is always first
       dir_ns = dir_ns[!grepl("byAttribute|byNodeID|bySample", dir_ns)]
@@ -829,10 +836,13 @@ shinyServer(function(input, output, session) {
       }
       
       ## Filters on cellCount and percentTotal
-      if("count"%in%colnames(d)){
+      if("count"%in%colnames(d) & v$cellCount>=0){
         d = d %>% subset(count > v$cellCount)
+      }else if(v$cellCount == -1){
+        d[is.na(d)] = -1
       }
-      if("percenttotal"%in%colnames(d)){
+      
+      if("percenttotal"%in%colnames(d) & v$percentTotal>=0){
         d = d %>% subset(percenttotal > v$percentTotal)
       }
       
@@ -1048,10 +1058,13 @@ shinyServer(function(input, output, session) {
               }
               
               ## Filters on cellCount and percentTotal
-              if("count"%in%colnames(d)){
+              if("count"%in%colnames(d) & v$cellCount>=0){
                 d = d %>% subset(count > v$cellCount)
+              }else if(v$cellCount == -1){
+                d[is.na(d)] = -1
               }
-              if("percenttotal"%in%colnames(d)){
+              
+              if("percenttotal"%in%colnames(d) & v$percentTotal>=0){
                 d = d %>% subset(percenttotal > v$percentTotal)
               }
               
@@ -1195,10 +1208,13 @@ shinyServer(function(input, output, session) {
                 }
                 
                 ## Filters on cellCount and percentTotal
-                if("count"%in%colnames(d)){
+                if("count"%in%colnames(d) & v$cellCount>=0){
                   d = d %>% subset(count > v$cellCount)
+                }else if(v$cellCount == -1){
+                  d[is.na(d)] = -1
                 }
-                if("percenttotal"%in%colnames(d)){
+                
+                if("percenttotal"%in%colnames(d) & v$percentTotal>=0){
                   d = d %>% subset(percenttotal > v$percentTotal)
                 }
                 
@@ -1571,7 +1587,7 @@ shinyServer(function(input, output, session) {
                                                   grid_height = unit(6, "mm"),
                                                   grid_width = unit(6, "mm"),
                                                   labels_gp = gpar(fontsize = 12)))
-         
+
          draw(v$mainHeatmap + h1)
          v$forcedHeatmap = h1
        }else if( !is.null(v$dataToPlot_forced) & !is.null(v$annotationColumn) & !is.null(v$sortColumn)){
@@ -1601,7 +1617,7 @@ shinyServer(function(input, output, session) {
                                                     grid_width = unit(6, "mm"),
                                                     labels_gp = gpar(fontsize = 12)),
                         width = unit(6, "mm"))
-           
+
            draw(v$mainHeatmap + h1 + h2)
            v$forcedHeatmap = h1 + h2
          }else if(v$annotationColumn=="None" & v$sortColumn=="None"){
@@ -2044,11 +2060,13 @@ shinyServer(function(input, output, session) {
    #     nodes = nodeGroups %>% subset(group==g) %>% .$Node %>% unique
    #     bubble_list[[g]] = nodes
    #   }
-   #   
+   # 
    #   ## Check if we are connected to Cytobank
    #   if(!is.null(v$cyto_session)){
    # 
-   #     spade.bubbles_set(v$cyto_session, spade=v$cyto_spade, bubbles=bubble_list)
+   #     spade.bubbles_set(v$cyto_session, 
+   #                       spade=v$cyto_spade, 
+   #                       bubbles=bubble_list)
    #     my_spade_check_test <- "Your SPADE bubbles have been set"
    #     js_string <- 'alert("SOMETHING");'
    #     js_string <- sub("SOMETHING",my_spade_check_test,js_string)

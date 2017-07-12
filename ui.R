@@ -94,8 +94,8 @@ shinyUI(
                                               accept=NULL)
                              ),
                              column(4, offset = 1,
-                                    numericInput('cellCountSS', h4('Filter by cell count'), value = 0),
-                                    numericInput('percentTotalSS', h4('Filter by percenttotal'), value = 0)
+                                    numericInput('cellCountSS', h4('Filter by cell count'), value = -1),
+                                    numericInput('percentTotalSS', h4('Filter by percenttotal'), value = -1)
                              ),
                              column(4,
                                     selectInput('scalingMethodSS', h4('Data transformation'), c('None','arcsinh')),
@@ -121,8 +121,8 @@ shinyUI(
                                               accept=NULL)
                              ),
                              column(4, offset = 1,
-                                    numericInput('cellCountMS', h4('Filter by cell count'), value = 0),
-                                    numericInput('percentTotalMS', h4('Filter by percenttotal'), value = 0)
+                                    numericInput('cellCountMS', h4('Filter by cell count'), value = -1),
+                                    numericInput('percentTotalMS', h4('Filter by percenttotal'), value = -1)
                              ),
                              column(4,
                                     selectInput('scalingMethodMS', h4('Data transformation'), c('None','arcsinh')),
