@@ -194,8 +194,8 @@ shinyServer(function(input, output, session) {
     
     fns = list.files(paste0(temp_dir, "/bySample"))
     groups = data.frame(filename=fns)
-    groups$Individuals = apply(groups, 1, function(x) str_extract(x[1], paste(unique(v$sampleTags$Individuals), collapse="|")))
-    groups = groups %>% left_join(v$sampleTags%>%select(Individuals, Conditions)%>%unique)
+    groups$FCS.Filename = gsub("_viSNE.*", "_viSNE.fcs", groups$filename)
+    groups = groups %>% left_join(v$sampleTags)
     
     ## For each group make a directory with the corresponding files
     ## Put a with progress here possibly
@@ -634,10 +634,18 @@ shinyServer(function(input, output, session) {
       v$sampleTags = v$sampleTags %>% select(-Conditions, -file) %>% rename(Conditions=group)
       v$sampleTags = v$sampleTags[,c(1, length(v$sampleTags), 2:(length(v$sampleTags)-1))]
       ## write new group files
-      #v$sampleTags$FCS.Filename = sub("_live.*", "", v$sampleTags$FCS.Filename)
-      #write.table(v$sampleTags%>%select(FCS.Filename, Conditions)%>%rename(Sample.Type=Conditions), file=paste0(temp_dir,"/experiment_",v$exp_id,"_annotations.tsv"), row.names = F, col.names = F, quote=F, sep="\t")
+      sink(file=paste0(temp_dir,"/experiment_",v$exp_id,"_annotations_uploaded.tsv"))
+      cat(paste(gsub("\\.", " ", colnames(v$sampleTags)), collapse = "\t"), "\n") ## it needs column names with spaces
+      for(i in 1:nrow(v$sampleTags)){
+        if(i<nrow(v$sampleTags)){
+          cat(paste(v$sampleTags[i,], collapse = "\t"), "\n")
+        }else if(i==nrow(v$sampleTags)){
+          cat(paste(v$sampleTags[i,], collapse = "\t"))
+        }
+      }
+      sink()
       ## Upload sample tags (uncomment to test when ready)
-      #sample_tags.upload(v$cyto_session, v$exp_id, file_path=paste0(temp_dir,"/experiment_",v$exp_id,"_annotations.tsv"))
+      sample_tags.upload(v$cyto_session, v$exp_id, file_path=paste0(temp_dir,"/experiment_",v$exp_id,"_annotations_uploaded.tsv"))
       updateTabItems(session, "tabs", selected = "cytologin")
     }
   })
