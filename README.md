@@ -59,7 +59,7 @@ In this tab you can define up to three markers to divide the SPADE nodes in `Hig
 
 #### Node identification ####
 
-In this tab you can define cell populations and push SPADE bubbles to Cytobank using the `Push node groups` button.
+In this tab you can define cell populations and push SPADE bubbles to Cytobank using the `Push node groups` button. There is a known bug in this functionality which will be resolved shortly.
 
 #### Example ####
 
