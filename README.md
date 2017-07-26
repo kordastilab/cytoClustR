@@ -8,7 +8,7 @@ cytoClusteR was developed by the Kordasti lab at King's College London.
 
 #### Requirements ####
 
-Install R 3.3 from https://cran.r-project.org/bin/
+Install R 3.4 from https://cran.r-project.org/bin/
 
 Within R, install and load shiny package by running the following commands:
 > install.packages("shiny")  
