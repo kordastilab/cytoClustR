@@ -24,7 +24,7 @@ This may take a minute. Keep an eye on R's console in case any dependencies need
 
 #### Data loading ####
 
-* **Cytobank login**. Use this tab to download your data directly from Cytobank. You can log in either using your username, password and your site or by using an authentication token and your site.
+* **Cytobank login**. Use this tab to download your data directly from Cytobank. You can log in either using your username, password and your site or by using an authentication token and your site. Please not that when entering Cytobank's site, you only need to omit "cytobank.org". For example, if your site is **mrc.cytobank.org** you only need to enter **mrc** in the "site" field of the login page.
 
 * **Manual input**. Use `Single-sample mode` or `Multiple-sample mode` to load SPADE data directly without logging in to Cytobank. In each tab you can select among multiple options while importing your input:
     1. **Input file:** Your SPADE table.
