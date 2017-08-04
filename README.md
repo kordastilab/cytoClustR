@@ -26,7 +26,7 @@ Some users experienced "rJava"-related errors while running cytocluster in MacOS
 
 #### Data loading ####
 
-Below you can find a very basic description of cytoClusteR's GUI. A detailed step-by-step guide can be found [`here.`]()
+Below you can find a very basic description of cytoClusteR's GUI. A detailed step-by-step guide can be found [`here`](https://github.com/kordastilab/cytocluster/blob/master/docs/step_by_step_guide.md).
 
 * **Cytobank login**. Use this tab to download your data directly from Cytobank. You can log in either using your username, password and your site or by using an authentication token and your site. Please not that when entering Cytobank's site, you only need to omit "cytobank.org". For example, if your site is **mrc.cytobank.org** you only need to enter **mrc** in the "site" field of the login page.
 
