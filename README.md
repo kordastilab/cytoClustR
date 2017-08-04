@@ -1,8 +1,8 @@
-# cytoClusteR #
+# CytoClusteR #
 
-cytoClusteR employs hierarchical clustering to identify cell population in SPADE data and facilitate comparisons among multiple groups of samples.
+CytoClusteR employs hierarchical clustering to identify cell population in SPADE data and facilitate comparisons among multiple groups of samples.
 
-cytoClusteR was developed by the Kordasti lab at King's College London.
+CytoClusteR was developed by the Kordasti lab at King's College London.
 
 ### Setup ###
 
@@ -14,19 +14,19 @@ Within R, install and load shiny package by running the following commands:
 > install.packages("shiny")  
 > library(shiny)
 
-You are all set. To run cytoClusteR run within R:
+You are all set. To run CytoClusteR run within R:
 > runGitHub("cytocluster", "kordastilab")
 
-Please note that when you run cytoClusteR for the first time, all additional dependencies will be installed automatically.
+Please note that when you run CytoClusteR for the first time, all additional dependencies will be installed automatically.
 This may take a couple of minutes. Keep an eye on R's console in case any dependencies need to be installed from source.
 
-Some users experienced "rJava"-related errors while running cytocluster in MacOS. If you see any such error while you are running the "runGitHub" (see above) please make sure you update MacOS, R and Rstudio (if you use it) to their latest versions and then follow [`these steps`](https://github.com/kordastilab/cytocluster/blob/master/docs/rJava.md) to resolve the error.
+Some users experienced "rJava"-related errors while running Cytocluster in MacOS. If you see any such error while you are running the "runGitHub" (see above) please make sure you update MacOS, R and Rstudio (if you use it) to their latest versions and then follow [`these steps`](https://github.com/kordastilab/cytocluster/blob/master/docs/rJava.md) to resolve the error.
 
 ### Usage ###
 
 #### Data loading ####
 
-Below you can find a very basic description of cytoClusteR's GUI. A detailed step-by-step guide can be found [`here`](https://github.com/kordastilab/cytocluster/blob/master/docs/step_by_step_guide.md).
+Below you can find a very basic description of CytoClusteR's GUI. A detailed step-by-step guide can be found [`here`](https://github.com/kordastilab/cytocluster/blob/master/docs/step_by_step_guide.md).
 
 * **Cytobank login**. Use this tab to download your data directly from Cytobank. You can log in either using your username, password and your site or by using an authentication token and your site. Please not that when entering Cytobank's site, you only need to omit "cytobank.org". For example, if your site is **mrc.cytobank.org** you only need to enter **mrc** in the "site" field of the login page.
 
@@ -67,7 +67,7 @@ In this tab you can define cell populations and push SPADE bubbles to Cytobank u
 
 #### Example ####
 
-Please note that if you use the `Cytobank log in` utility your data will be stored in the ~/.cytocluster_temp directory temporarily.
+Please note that if you use the `Cytobank log in` utility your data will be stored in the ~/cytocluster_temp directory temporarily.
 
 #### Example ####
 
