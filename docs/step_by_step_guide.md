@@ -12,7 +12,7 @@ Both ways to get your data in CytoClusteR are described in details below.
 
 
 ### Get your data from Cytobank  ###
-In order to
+
 
 
 ### Get your data from local directory  ###
