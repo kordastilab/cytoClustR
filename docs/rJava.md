@@ -2,7 +2,7 @@
 
 #### Solution ####
 
-The way to solve this issue has been found in [`this post.`](https://stackoverflow.com/questions/30738974/rjava-load-error-in-rstudio-r-after-upgrading-to-osx-yosemite).
+The way to solve this issue has been found in [`this post.`](https://stackoverflow.com/questions/30738974/rjava-load-error-in-rstudio-r-after-upgrading-to-osx-yosemite)
 
 Steps:
 
