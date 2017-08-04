@@ -18,7 +18,7 @@ You are all set. To run CytoClusteR run within R:
 Please note that when you run CytoClusteR for the first time, all additional dependencies will be installed automatically.
 This may take a couple of minutes. Keep an eye on R's console in case any dependencies need to be installed from source.
 
-Some users experienced "rJava"-related errors while running Cytocluster in MacOS. If you see any such error while you are running the "runGitHub" (see above) please make sure you update MacOS, R and Rstudio (if you use it) to their latest versions and then follow [`these steps`](https://github.com/kordastilab/cytocluster/blob/master/docs/rJava.md) to resolve the error.
+Some users reported rJava-related errors while running CytoclusteR in MacOS. If you experience any such error during setup please update MacOS, R and Rstudio (if applicable) to their latest versions and then follow [`these steps`](https://github.com/kordastilab/cytocluster/blob/master/docs/rJava.md) to resolve the error.
 
 ### Usage ###
 
