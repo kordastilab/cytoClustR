@@ -24,6 +24,6 @@ Steps:
 6. Finally, copy and paste in the terminal the following:
 > sudo ln -f -s $(/usr/libexec/java_home)/jre/lib/server/libjvm.dylib /usr/local/lib
 
-After that you should be all set. Restart the R/Rstudio and run the following commands to run cytoClusteR (the commands are the same as in the main [`README file`](https://github.com/kordastilab/cytocluster/blob/master/README.md):
+After that you should be all set. Restart R/Rstudio and run the following commands to run cytoClusteR (the commands are the same as in the main [`README file`](https://github.com/kordastilab/cytocluster/blob/master/README.md):
 > library(shiny)  
 > runGitHub("cytocluster", "kordastilab")
