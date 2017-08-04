@@ -30,7 +30,7 @@ Both ways to get your data in CytoClusteR are described in details below.
 ### Visualise the differences between the two groups  ###
 
 
-## Follow-up certain nodes of interest  ##
+## Follow nodes of interest  ##
 
 
 ## Group nodes into cell subpopulation  ##
