@@ -18,7 +18,9 @@ You are all set. To run cytoClusteR run within R:
 > runGitHub("cytocluster", "kordastilab")
 
 Please note that when you run cytoClusteR for the first time, all additional dependencies will be installed automatically.
-This may take a minute. Keep an eye on R's console in case any dependencies need to be installed from source.
+This may take a couple of minutes. Keep an eye on R's console in case any dependencies need to be installed from source.
+
+Some users experienced "rJava"-related errors while running cytocluster in MacOS. If you see any such error while you are running the "runGitHub" (see above) please make sure you update MacOS, R and Rstudio (if you use it) to their latest versions and then follow [`these steps`]() to resolve the error.
 
 ### Usage ###
 
