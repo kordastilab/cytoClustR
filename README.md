@@ -26,6 +26,8 @@ Some users experienced "rJava"-related errors while running cytocluster in MacOS
 
 #### Data loading ####
 
+Below you can find a very basic description of cytoClusteR's GUI. A detailed step-by-step guide can be found [`here.`]()
+
 * **Cytobank login**. Use this tab to download your data directly from Cytobank. You can log in either using your username, password and your site or by using an authentication token and your site. Please not that when entering Cytobank's site, you only need to omit "cytobank.org". For example, if your site is **mrc.cytobank.org** you only need to enter **mrc** in the "site" field of the login page.
 
 * **Manual input**. Use `Single-sample mode` or `Multiple-sample mode` to load SPADE data directly without logging in to Cytobank. In each tab you can select among multiple options while importing your input:
@@ -70,6 +72,14 @@ Please note that if you use the `Cytobank log in` utility your data will be stor
 #### Example ####
 
 See [`example_data`](https://github.com/kordastilab/cytocluster/tree/master/example_data) for a example input data.
+
+### Contributors ###
+
+CytoClusteR has been designed by Mr. Thanos Mourikis and Dr. Shahram Kordasti.
+
+Main developer: Thanos Mourikis
+
+Contributions are always welcome!
 
 ### Support ###
 
