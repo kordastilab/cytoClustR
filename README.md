@@ -63,11 +63,11 @@ In this tab you can define up to three markers to divide the SPADE nodes in `Hig
 
 In this tab you can define cell populations and push SPADE bubbles to Cytobank using the `Push node groups` button. There is a known bug in this functionality which will be resolved shortly.
 
-#### Example ####
+#### Data storage ####
 
-Please note that if you use the `Cytobank log in` utility your data will be stored in the ~/cytocluster_temp directory temporarily.
+Please note that if you use the `Cytobank log in` utility, CytoClusteR will create a directory (~/cytocluster_temp) to download your data. This directory is overwritten every time you run CytoClusteR. If you want to store your raw data locally, make sure you copy them to another directory.
 
-#### Example ####
+#### Example data ####
 
 See [`example_data`](https://github.com/kordastilab/cytocluster/tree/master/example_data) for a example input data.
 
