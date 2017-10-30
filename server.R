@@ -2060,26 +2060,35 @@ shinyServer(function(input, output, session) {
      }
    })
    
-   # observeEvent(input$submitNodeGroups, {
-   #   nodeGroups = hot_to_r(input$nodeGroupstb)
-   #   nodeGroups = nodeGroups %>% subset(group!="")
-   #   bubble_list = list()
-   #   for(g in unique(nodeGroups$group)){
-   #     nodes = nodeGroups %>% subset(group==g) %>% .$Node %>% unique
-   #     bubble_list[[g]] = nodes
-   #   }
-   # 
-   #   ## Check if we are connected to Cytobank
-   #   if(!is.null(v$cyto_session)){
-   # 
-   #     spade.bubbles_set(v$cyto_session, 
-   #                       spade=v$cyto_spade, 
-   #                       bubbles=bubble_list)
-   #     my_spade_check_test <- "Your SPADE bubbles have been set"
-   #     js_string <- 'alert("SOMETHING");'
-   #     js_string <- sub("SOMETHING",my_spade_check_test,js_string)
-   #     session$sendCustomMessage(type='jsCode', list(value = js_string))
-   #   }
-   # })
+   observeEvent(input$submitNodeGroups, {
+     nodeGroups = hot_to_r(input$nodeGroupstb)
+     nodeGroups = nodeGroups %>% subset(group!="")
+     bubble_list = list()
+     for(g in unique(nodeGroups$group)){
+       nodes = nodeGroups %>% subset(group==g) %>% .$Node %>% unique
+       bubble_list[[g]] = as.numeric(nodes)
+     }
+     
+     ## Refresh the login
+     if (USER$Logged == TRUE) {
+       ## Here I should put the UI of the application if the login to cytobank is successful
+       if(input$userName!="" & input$passwd!=""){
+         v$cyto_session = authenticate(site=tolower(input$userSite), username = input$userName, password = input$passwd)
+       }else if(input$userName=="" & input$passwd=="" & input$cytoToken!=""){
+         v$cyto_session = authenticate(site=tolower(input$userSite), auth_token=input$cytoToken)
+       }
+     }
+
+     ## Check if we are connected to Cytobank
+     if(!is.null(v$cyto_session)){
+       spade.bubbles_set(v$cyto_session,
+                         spade=v$cyto_spade,
+                         bubbles=bubble_list)
+       my_spade_check_test <- "Your SPADE bubbles have been set"
+       js_string <- 'alert("SOMETHING");'
+       js_string <- sub("SOMETHING",my_spade_check_test,js_string)
+       session$sendCustomMessage(type='jsCode', list(value = js_string))
+     }
+   })
   
 })
