@@ -134,7 +134,7 @@ shinyUI(
                              div(style="display:inline-block",selectInput('tSNEcolsMS', h4('Include tSNE'), c('No', 'Yes'), width="200px"))
                            ),
                            br(),
-                           sliderInput("num_groups", "Change number of groups (resets the table)", value = 2, min=1, max = 10, step = 1),
+                           numericInput("num_groups", "Change number of groups (resets the table)", value = 2, min=1, max = 10, step = 1),
                            h4("Please define your groups"),
                            h6("*Supply Output.Directory and click \"Clean and Save\" to export cleaned individual sample files"),
                            rHandsontableOutput("dataGroups_tbs", width = "100%", height = "100%"),
