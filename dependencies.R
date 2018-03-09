@@ -20,7 +20,8 @@ pkgsR  =  c("shiny",
             "readr",
             "CytobankAPI",
             "stringr",
-            "dplyr")
+            "dplyr",
+            "tibble")
 for (pkgR in pkgsR) 
   if (!pkgR %in% rownames(installed.packages())) { 
     install.packages(pkgR)
@@ -64,5 +65,3 @@ rm(g, git, gits)
 
 ## And options
 options(stringsAsFactors=FALSE)
-
-
