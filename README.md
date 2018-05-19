@@ -29,10 +29,15 @@ Some users reported rJava-related errors while running CytoclusteR in MacOS. If 
 There are 2 ways to import data in cytoclusteR. For both ways some common parameters are applicable.
 
 i. **Input file:** Your SPADE table. This is a single table as exported from SPADE (in single-sample mode), the locations of SPADE files for 1 or more groups of samples (in multiple-sample mode) or simply your credentials for the Cytobank login mode. See below for details.
+
 ii. **Marker cleaning file:** File to clean raw column names as exported from SPADE. See [`example_data/needed_columns.xlsx`](https://github.com/kordastilab/cytocluster/blob/master/example_data/needed_columns.xlsx).
+
 iii. **Filter by cell count:** Set the minimum `cell count` for SPADE nodes to be included in the analysis.
+
 iv. **Filter by percenttotal:** Set the minimum `percent total` for SPADE nodes to be included in the analysis.
+
 v. **Data transformation:** Set the transformation method. For now only `arcsinh` is available. Default co-factor is 5 - remember to change it if different value was used during your SPADE analysis.
+
 vi. **Select column type:** As SPADE output contains both scaled (medians) and non-scaled (raw medians) values, select from the drop-down menu the type of column you want to use for you cytocluster analysis. Also tSNE column can be included in or excluded from the analysis using the `Include tSNE` drop-down menu.
 
 
