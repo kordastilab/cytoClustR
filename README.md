@@ -40,14 +40,13 @@ v. **Data transformation:** Set the transformation method. For now only `arcsinh
 
 vi. **Select column type:** As SPADE output contains both scaled (medians) and non-scaled (raw medians) values, select from the drop-down menu the type of column you want to use for you cytocluster analysis. Also tSNE column can be included in or excluded from the analysis using the `Include tSNE` drop-down menu.
 
+vii. **Select markers:** As soon as you press the `Select markers` button, your data will be imported and you will be presented with the option to select the markers for clustering. Please tick the markers you want to do the clustering on and press `Go`.
 
 * **1) Cytobank login**. Use this tab to download your data directly from Cytobank. You can log in either using your username, password and your site or by using an authentication token and your site. Please note that when entering Cytobank's site, you need to omit "cytobank.org". For example, if your site is **mrc.cytobank.org** you only need to enter **mrc** in the "site" field of the login page.
 
 * **2) Manual input**. Use `Single-sample mode` or `Multiple-sample mode` to load SPADE data directly without logging in to Cytobank. In each tab you can select among multiple options while importing your input:
        
     * In `Multiple-sample` tab you can input groups of samples by specifying the directory of SPADE files of each group in the table entitled `Please define your groups`. The number of groups to be imported can be adjusted by the value of the field entitled `Change number of groups`. If cleaning and scaling is to be performed on the data, cyctoclusteR provides a functionality to save the cleaned and scaled data for future use. To do this you need to press the `Clean and Save` button after filling the sample groups in the corresponding table and after you select the appropriate parameters for scaling in the fields described above. `Clean and Save` will save your data in the directory defined for each group in the `Output.Directory` column of the input table. You can use this data in dowstream analysis or as input to other visualising tools.
-
-    * As soon as you press the `Select markers` button, your data will be imported and you will be presented with the option to select the markers for clustering.
 
 #### Define sample tags (optional) ####
 
