@@ -26,21 +26,23 @@ Some users reported rJava-related errors while running CytoclusteR in MacOS. If 
 
 #### STEP 1: Data loading ####
 
-There are 2 ways to import data in cytoclusteR.
+There are 2 ways to import data in cytoclusteR. For both ways some common parameters are applicable.
+
+i. **Input file:** Your SPADE table. This is a single table as exported from SPADE (in single-sample mode), the locations of SPADE files for 1 or more groups of samples (in multiple-sample mode) or simply your credentials for the Cytobank login mode. See below for details.
+ii. **Marker cleaning file:** File to clean raw column names as exported from SPADE. See [`example_data/needed_columns.xlsx`](https://github.com/kordastilab/cytocluster/blob/master/example_data/needed_columns.xlsx).
+iii. **Filter by cell count:** Set the minimum `cell count` for SPADE nodes to be included in the analysis.
+iv. **Filter by percenttotal:** Set the minimum `percent total` for SPADE nodes to be included in the analysis.
+v. **Data transformation:** Set the transformation method. For now only `arcsinh` is available. Default co-factor is 5 - remember to change it if different value was used during your SPADE analysis.
+vi. **Select column type:** As SPADE output contains both scaled (medians) and non-scaled (raw medians) values, select from the drop-down menu the type of column you want to use for you cytocluster analysis. Also tSNE column can be included in or excluded from the analysis using the `Include tSNE` drop-down menu.
+
 
 * **1) Cytobank login**. Use this tab to download your data directly from Cytobank. You can log in either using your username, password and your site or by using an authentication token and your site. Please note that when entering Cytobank's site, you need to omit "cytobank.org". For example, if your site is **mrc.cytobank.org** you only need to enter **mrc** in the "site" field of the login page.
 
 * **2) Manual input**. Use `Single-sample mode` or `Multiple-sample mode` to load SPADE data directly without logging in to Cytobank. In each tab you can select among multiple options while importing your input:
-    1. **Input file:** Your SPADE table.
-    2. **Marker cleaning file:** File to clean raw column names as exported from SPADE. See [`example_data/needed_columns.xlsx`](https://github.com/kordastilab/cytocluster/blob/master/example_data/needed_columns.xlsx).
-    3. **Filter by cell count:** Set the minimum `cell count` for SPADE nodes to be included in the analysis.
-    4. **Filter by percenttotal:** Set the minimum `percent total` for SPADE nodes to be included in the analysis.
-    5. **Data transformation:** Set the transformation method. For now only `arcsinh` is available. Default co-factor is 5 - remember to change it if different value was used during your SPADE analysis.
-    6. **Select column type:** As SPADE output contains both scaled (medians) and non-scaled (raw medians) values, select from the drop-down menu the type of column you want to use for you cytocluster analysis. Also tSNE column can be included in or excluded from the analysis using the `Include tSNE` drop-down menu.
-    
-* In `Multiple-sample` tab you can input groups of samples by specifying the directory of SPADE files of each group in the table entitled `Please define your groups`. The number of groups to be imported can be adjusted by the value of the field entitled `Change number of groups`. If cleaning and scaling is to be performed on the data, cyctoclusteR provides a functionality to save the cleaned and scaled data for future use. To do this you need to press the `Clean and Save` button after filling the sample groups in the corresponding table and after you select the appropriate parameters for scaling in the fields described above. `Clean and Save` will save your data in the directory defined for each group in the `Output.Directory` column of the input table. You can use this data in dowstream analysis or as input to other visualising tools.
+       
+    * In `Multiple-sample` tab you can input groups of samples by specifying the directory of SPADE files of each group in the table entitled `Please define your groups`. The number of groups to be imported can be adjusted by the value of the field entitled `Change number of groups`. If cleaning and scaling is to be performed on the data, cyctoclusteR provides a functionality to save the cleaned and scaled data for future use. To do this you need to press the `Clean and Save` button after filling the sample groups in the corresponding table and after you select the appropriate parameters for scaling in the fields described above. `Clean and Save` will save your data in the directory defined for each group in the `Output.Directory` column of the input table. You can use this data in dowstream analysis or as input to other visualising tools.
 
-* As soon as you press the `Select markers` button, your data will be imported and you will be presented with the option to select the markers for clustering.
+    * As soon as you press the `Select markers` button, your data will be imported and you will be presented with the option to select the markers for clustering.
 
 #### Define sample tags (optional) ####
 
