@@ -28,19 +28,19 @@ Some users reported rJava-related errors while running CytoclusteR in MacOS. If 
 
 There are 2 ways to import data in cytoclusteR. For both ways some common parameters are applicable.
 
-i. **Input file:** Your SPADE table. This is a single table as exported from SPADE (in single-sample mode), the locations of SPADE files for 1 or more groups of samples (in multiple-sample mode) or simply your credentials for the Cytobank login mode. See below for details.
+**i. Input file:** Your SPADE table. This is a single table as exported from SPADE (in single-sample mode), the locations of SPADE files for 1 or more groups of samples (in multiple-sample mode) or simply your credentials for the Cytobank login mode. See below for details.
 
-ii. **Marker cleaning file:** File to clean raw column names as exported from SPADE. See [`example_data/needed_columns.xlsx`](https://github.com/kordastilab/cytocluster/blob/master/example_data/needed_columns.xlsx).
+**ii. Marker cleaning file:** File to clean raw column names as exported from SPADE. See [`example_data/needed_columns.xlsx`](https://github.com/kordastilab/cytocluster/blob/master/example_data/needed_columns.xlsx).
 
-iii. **Filter by cell count:** Set the minimum `cell count` for SPADE nodes to be included in the analysis.
+**iii. Filter by cell count:** Set the minimum `cell count` for SPADE nodes to be included in the analysis.
 
-iv. **Filter by percenttotal:** Set the minimum `percent total` for SPADE nodes to be included in the analysis.
+**iv. Filter by percenttotal:** Set the minimum `percent total` for SPADE nodes to be included in the analysis.
 
-v. **Data transformation:** Set the transformation method. For now only `arcsinh` is available. Default co-factor is 5 - remember to change it if different value was used during your SPADE analysis.
+**v. Data transformation:** Set the transformation method. For now only `arcsinh` is available. Default co-factor is 5 - remember to change it if different value was used during your SPADE analysis.
 
-vi. **Select column type:** As SPADE output contains both scaled (medians) and non-scaled (raw medians) values, select from the drop-down menu the type of column you want to use for you cytocluster analysis. Also tSNE column can be included in or excluded from the analysis using the `Include tSNE` drop-down menu.
+**vi. Select column type:** As SPADE output contains both scaled (medians) and non-scaled (raw medians) values, select from the drop-down menu the type of column you want to use for you cytocluster analysis. Also tSNE column can be included in or excluded from the analysis using the `Include tSNE` drop-down menu.
 
-vii. **Select markers:** As soon as you press the `Select markers` button, your data will be imported and you will be presented with the option to select the markers for clustering. Please tick the markers you want to do the clustering on and press `Go`.
+**vii. Select markers:** As soon as you press the `Select markers` button, your data will be imported and you will be presented with the option to select the markers for clustering. Please tick the markers you want to do the clustering on and press `Go`.
 
 * **1) Cytobank login**. Use this tab to download your data directly from Cytobank. You can log in either using your username, password and your site or by using an authentication token and your site. Please note that when entering Cytobank's site, you need to omit "cytobank.org". For example, if your site is **mrc.cytobank.org** you only need to enter **mrc** in the "site" field of the login page.
 
@@ -54,15 +54,19 @@ After importing your data using the `Cytobank log in` option you can switch to `
 
 #### Step 2: Clustering ####
 
+CytoclusteR draws cell population heatmaps for your SPADE data using the expression values of the markers you selected in the previous step. If you used `Single-sample mode`, only one heatmap will be visible. You can work on it or export it. Additonal options appear when multiple groups are analysed and comparison between groups is of interest. In general, cytoclusteR uses one group of samples as a "reference" group (defined by the user). After the clustering of cells from the reference group, pairwise comparisons are facilitated by enforcing the clustering of the reference group upon another group of samples (forced group). Reference and forced groups are visualised side-by-side to reveal differences in expression. The main options and tabs of `Clustering` are summarised below.
+
 1. **Main group:**. Heatmap of the main group. You can select which group to plot using the dropdown menu (visible only when using Multiple-sample mode).
 2. **Forced group:**. This tab is useful for comparison of SPADE nodes among different groups of samples. When you press `Force heatmap` button the clustering of SPADE nodes in the **Main group** is applied to the group selected. This allows for direct comparisons of SPADE nodes and cell subpopulations among groups.
-3. **Overlay groups:** Comparison of the two groups in the `Forced group` tab. Third heatmap illustrates the difference in expression between the two groups. Expression values of the `Forced group` are subtracted from the `Main group`.
+3. **Overlay groups:** Heatmap illustrates the difference in expression between the two groups. Expression values of the `Forced group` are subtracted from those of the `Main group`.
 
-Visualization parameters can be altered in the `Heatmap configuration` box. Using the `Heatmap configuration` box users can also select additional markers to annotate or sort the heatmap. Download the heatmap or the data using the `Download plot` or `Download data` buttons.
+* Visualization parameters can be altered in the `Heatmap configuration` box. Using the `Heatmap configuration` box users can also select additional markers to annotate or sort the heatmap. 
 
-Hierarchical clustering and visualisation is performed using the default settings of [`ComplexHeatmap R package`](https://bioconductor.org/packages/release/bioc/html/ComplexHeatmap.html).
+* Download the heatmap or the data using the `Download plot` or `Download data` buttons.
 
-#### Post-processing ####
+* Hierarchical clustering and visualisation is performed using the default settings of [`ComplexHeatmap R package`](https://bioconductor.org/packages/release/bioc/html/ComplexHeatmap.html).
+
+#### Step 3: Post-processing ####
 
 In this tab you can define up to three markers to divide the SPADE nodes in `High`, `Medium` and `Low` expression for each marker. A z-score is calculated for each node and marker. When the z-score >= 1 the expression level is set to High(H), when the z-score > -1 and < 1 the expression level is set to Medium (M) and when the z-score <= -1 the expression level is set to Low(L) for each marker selected.
 
