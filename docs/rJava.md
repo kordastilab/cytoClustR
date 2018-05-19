@@ -28,7 +28,9 @@ Steps:
 If in any of the steps above you encounter an error related to OpenMP, this is caused because R 3.4.0 is compiled by CRAN with llvm-4.0.0 (which supports OpenMP), but Apple's fork (installed by default on macOS) does not support OpenMP. To resolve this you need to install [`brew`](https://brew.sh/) and then the compilers from the command line with brew install gcc --without-multilib then you will have to add the compiler path to your ~/.R/Makevars file (you need to create this in your home directory).
 
 CC=/usr/local/bin/gcc-7
+
 CXX=/usr/local/bin/gcc-7
+
 CXX11=/usr/local/bin/gcc-7
 
 After that you should be all set. Restart R/Rstudio and run the following commands to run cytoClusteR (the commands are the same as in the main [`README file`](https://github.com/kordastilab/cytocluster/blob/master/README.md):
