@@ -50,7 +50,7 @@ There are 2 ways to import data in cytoclusteR. For both ways some common parame
 
 #### Define sample tags (optional) ####
 
-After importing your data using the `Cytobank log in` option you can switch to `Sample tags` tab to group your samples. This is particularly useful of no groups have been defined in Cytobank. To push these tags back to Cytobank press the `Push sample tags` button. Please note that this operation uses Cytobank's API and you make changes in your actual Cytobank experiment.
+After importing your data using the `Cytobank log in` option you can switch to `Sample tags` tab to group your samples. This is particularly useful if no groups have been defined in Cytobank. To push these tags back to Cytobank press the `Push sample tags` button. Please note that this operation uses Cytobank's API and you make changes in your actual Cytobank experiment.
 
 #### Step 2: Clustering ####
 
