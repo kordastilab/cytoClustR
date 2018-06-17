@@ -1,4 +1,14 @@
 ## Install/Load dependencies
+
+## First check if java is installed
+
+# tryCatch(system('pandoc -v', intern = T))
+# possibleError <- tryCatch(library(rJava), error=function(e) e)
+# 
+# if(!inherits(possibleError, "error")){
+# 
+
+
 pkgsR  =  c("shiny",
             "xlsx",
             "tidyr",
@@ -21,7 +31,9 @@ pkgsR  =  c("shiny",
             "CytobankAPI",
             "stringr",
             "dplyr",
-            "tibble")
+            "tibble",
+            "Rcpp",
+            "stringi")
 for (pkgR in pkgsR) 
   if (!pkgR %in% rownames(installed.packages())) { 
     install.packages(pkgR)

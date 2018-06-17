@@ -27,7 +27,8 @@ shinyServer(function(input, output, session) {
                      forcedHeatmapTitle=NULL, forcedHeatmapTitlefont=NULL, 
                      forcedHeatmapYfont=NULL, forcedHeatmapXfont=NULL,
                      postHeatmapTitlefont=NULL, postHeatmapTitle=NULL,
-                     postHeatmapYfont=NULL, postHeatmapXfont=NULL, dataPostProc=NULL,
+                     postHeatmapYfont=NULL, postHeatmapXfont=NULL, postHeatmapRowTitlefont=NULL,
+                     postHeatmapSplitGap=NULL, dataPostProc=NULL,
                      dataToPlot_overlay=NULL, overlayHeatmap=NULL, 
                      overlayHeatmapTitle=NULL, overlayHeatmapTitlefont=NULL, 
                      overlayHeatmapYfont=NULL, overlayHeatmapXfont=NULL)
@@ -180,17 +181,25 @@ shinyServer(function(input, output, session) {
     v$spade_idx = spade_selected$id[1]
     v$spade_name = spade_selected$name[1]
     v$cyto_spade = spade.show(v$cyto_session, experiment_id = v$exp_id, spade_id = v$spade_idx)
-    temp_dir = "~/cytocluster_temp"
-    dir.create(temp_dir)
-    ## Download the statistics tables
-    spade.download_statistics_tables(v$cyto_session, spade=v$cyto_spade, directory = temp_dir)
-    old_path = getwd()
-    setwd(temp_dir)
-    ## Change the file name in case it contains spaces
-    system("for f in *.zip; do mv \"$f\" \"${f// /}\"; done")
-    zipped_fn = list.files('.', pattern = ".zip_statistics.zip")
-    system(paste0("unzip ", temp_dir, "/", zipped_fn))
-    setwd(old_path)
+    
+    ## Here probably check operating system
+    if(.Platform$OS.type=="unix"){
+      temp_dir = "~/cytocluster_temp"
+      dir.create(temp_dir)
+      ## Download the statistics tables
+      spade.download_statistics_tables(v$cyto_session, spade=v$cyto_spade, directory = temp_dir)
+      old_path = getwd()
+      setwd(temp_dir)
+      ## Change the file name in case it contains spaces
+      system("for f in *.zip; do mv \"$f\" \"${f// /}\"; done")
+      zipped_fn = list.files('.', pattern = ".zip_statistics.zip")
+      system(paste0("unzip ", temp_dir, "/", zipped_fn))
+      setwd(old_path)
+    }else if(.Platform$OS.type=="windows"){
+      
+    }
+    
+
     
     fns = list.files(paste0(temp_dir, "/bySample"))
     groups = data.frame(filename=fns)
@@ -1745,6 +1754,8 @@ shinyServer(function(input, output, session) {
      v$postHeatmapTitlefont = input$postHeatmapTitlefont
      v$postHeatmapYfont = input$postHeatmapYfont
      v$postHeatmapXfont = input$postHeatmapXfont
+     v$postHeatmapRowTitlefont = input$postHeatmapRowTitlefont
+     v$postHeatmapSplitGap = input$postHeatmapSplitGap
      
      if(!is.null(v$dataToPlot)  &
         (marker1!="" | marker2!="" | marker3!="") &
@@ -1835,7 +1846,8 @@ shinyServer(function(input, output, session) {
                                                 labels_gp = gpar(fontsize = 12)),
                     split = d$type,
                     combined_name_fun = function(x) paste(unlist(strsplit(x, "/")), collapse = "\n"),
-                    gap = unit(5, "mm"))
+                    row_title_gp = gpar(fontsize = v$postHeatmapRowTitlefont, fontface = "bold"),
+                    gap = unit(v$postHeatmapSplitGap, "mm"))
        draw(h1)
      }
    })

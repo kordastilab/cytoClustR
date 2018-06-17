@@ -19,11 +19,11 @@ shinyUI(
       sidebarMenu(
         id = "tabs",
         menuItem("Cytobank log in", tabName = "cytologin", icon = icon("sign-in")),
-        menuItem("Sample tags", tabName = "sampleTags", icon = icon("database")),
+        menuItem("Sample tags", tabName = "sampleTags", icon = icon("server")),
         menuItem("Manual input mode", tabName = "mimode", icon=icon("file")),
         menuItem("Clustering", tabName = "hierclus", icon=icon("area-chart")),
-        menuItem("Post-processing", tabName = "postproc", icon=icon("fast-forward")),
-        menuItem("Node identification", tabName = "nodeid", icon=icon("cloud-upload")),
+        menuItem("Node identification", tabName = "postproc", icon=icon("eye")),
+        menuItem("Node push", tabName = "nodeid", icon=icon("cloud-upload")),
         menuItem("Contact us", tabName = "contact", icon=icon("envelope-o"))
       )
     ), ## End sidebar
@@ -285,7 +285,9 @@ shinyUI(
                                         numericInput('postHeatmapTitlefont', h4('Change title font size'), value = 16, step = 1),
                                         bootstrapPage(
                                           div(style="display:inline-block",numericInput('postHeatmapYfont', h4('Change Y axis font size'), value = 9, step = 1)),
-                                          div(style="display:inline-block",numericInput('postHeatmapXfont', h4('Change X axis font size'), value = 12, step = 1))
+                                          div(style="display:inline-block",numericInput('postHeatmapXfont', h4('Change X axis font size'), value = 12, step = 1)),
+                                          div(style="display:inline-block",numericInput('postHeatmapRowTitlefont', h4('Change row title font size'), value = 8, step = 1)),
+                                          div(style="display:inline-block",numericInput('postHeatmapSplitGap', h4('Change row gap (mm)'), value = 5, step = 1))
                                         ),
                                         br(),
                                         actionButton("postProc", "Go!",
