@@ -9,7 +9,7 @@ shinyUI(
     ## Header
     skin="blue",
     dashboardHeader(
-      title = "cytoClusteR",
+      title = "cytoClustR",
       titleWidth = 200
     ),## End header
 
@@ -23,8 +23,8 @@ shinyUI(
         menuItem("Manual input mode", tabName = "mimode", icon=icon("file")),
         menuItem("Clustering", tabName = "hierclus", icon=icon("area-chart")),
         menuItem("Node identification", tabName = "postproc", icon=icon("eye")),
-        menuItem("Node push", tabName = "nodeid", icon=icon("cloud-upload")),
-        menuItem("Contact us", tabName = "contact", icon=icon("envelope-o"))
+        menuItem("Node push", tabName = "nodeid", icon=icon("cloud-upload"))
+        #menuItem("Contact us", tabName = "contact", icon=icon("envelope-o"))
       )
     ), ## End sidebar
 
@@ -171,7 +171,7 @@ shinyUI(
                                               uiOutput("markersToShow")),
                                      numericInput('mainHeatmapTitlefont', h4('Change title font size'), value = 16, step = 1),
                                      bootstrapPage(
-                                       div(style="display:inline-block",numericInput('mainHeatmapYfont', h4('Y axis font size'), value = 9, step = 1)),
+                                       div(style="display:inline-block",numericInput('mainHeatmapYfont', h4('Y axis font size'), value = 8, step = 1)),
                                        div(style="display:inline-block",numericInput('mainHeatmapXfont', h4('X axis font size'), value = 12, step = 1))
                                      ),
                                      uiOutput("columnToSort"),

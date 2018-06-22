@@ -677,8 +677,8 @@ shinyServer(function(input, output, session) {
       wellPanel(
         h2("Select Markers to cluster"),
         checkboxGroupInput("markersTCCyto",h4(""),
-                           choices  = cnames,
-                           selected = cnames,
+                           choices  = mixedsort(cnames),
+                           selected = mixedsort(cnames),
                            inline = TRUE),
         bootstrapPage(
           div(style="display:inline-block",actionButton("UncheckAllCyto", "Uncheck all", 
@@ -2067,7 +2067,7 @@ shinyServer(function(input, output, session) {
        return()
      }else{
        ids = unique(v$dataToPlot$ID)
-       rhandsontable(data.frame(Node=as.character(ids), group=rep("", length(ids))), rowHeaders = NULL) %>%
+       rhandsontable(data.frame(Node=as.character(ids), group=rep("", length(ids))), rowHeaders = NULL, search=TRUE) %>%
          hot_table(highlightCol = TRUE, highlightRow = TRUE)
      }
    })

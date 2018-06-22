@@ -33,6 +33,7 @@ pkgsR  =  c("shiny",
             "dplyr",
             "tibble",
             "Rcpp",
+            "gtools",
             "stringi")
 for (pkgR in pkgsR) 
   if (!pkgR %in% rownames(installed.packages())) { 
