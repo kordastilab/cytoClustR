@@ -35,4 +35,4 @@ CXX11=/usr/local/bin/gcc-7
 
 After that you should be all set. Restart R/Rstudio and run the following commands to run cytoClusteR (the commands are the same as in the main [`README file`](https://github.com/kordastilab/cytocluster/blob/master/README.md):
 > library(shiny)  
-> runGitHub("cytocluster", "kordastilab")
+> runGitHub("cytoClustR", "kordastilab")
