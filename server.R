@@ -330,7 +330,7 @@ shinyServer(function(input, output, session) {
               splits = unlist(strsplit(fn, "\\."))
               ext = splits[length(splits)]
               if (ext=="xlsx" | ext=="xls"){
-                d = read.xlsx(paste0(p, "/", fn), 1)
+                d = read_excel(paste0(p, "/", fn), 1)
               }else if (ext=="csv"){
                 d = read.table(paste0(p, "/", fn), sep=",", header = T)
               }
@@ -356,7 +356,7 @@ shinyServer(function(input, output, session) {
                   d = d %>% select(one_of(kept_cols$col))
                 }
               }else if (!is.null(v$columnCorrectionInput)){
-                n = read.xlsx(v$columnCorrectionInput$datapath, 1)[,1:2]
+                n = read_excel(v$columnCorrectionInput$datapath, 1)[,1:2]
                 colnames(n) = c("row", "marker")
                 n = n %>% mutate(row=as.character(row))
 
@@ -472,7 +472,7 @@ shinyServer(function(input, output, session) {
               splits = unlist(strsplit(fn, "\\."))
               ext = splits[length(splits)]
               if (ext=="xlsx" | ext=="xls"){
-                d = read.xlsx(paste0(p, "/", fn), 1)
+                d = read_excel(paste0(p, "/", fn), 1)
               }else if (ext=="csv"){
                 d = read.table(paste0(p, "/", fn), sep=",", header = T)
               }
@@ -497,7 +497,7 @@ shinyServer(function(input, output, session) {
                   d = d %>% select(one_of(kept_cols$col))
                 }
               }else if (!is.null(v$columnCorrectionInput)){
-                n = read.xlsx(v$columnCorrectionInput$datapath, 1)[,1:2]
+                n = read_excel(v$columnCorrectionInput$datapath, 1)[,1:2]
                 colnames(n) = c("row", "marker")
                 n = n %>% mutate(row=as.character(row))
                 
@@ -788,7 +788,7 @@ shinyServer(function(input, output, session) {
       splits = unlist(strsplit(v$ssfileInputName, "\\."))
       ext = splits[length(splits)]
       if (ext=="xlsx" | ext=="xls"){
-        d = read.xlsx(v$ssfileInput$datapath, 1)
+        d = read_excel(v$ssfileInput$datapath, 1)
       }else if (ext=="csv"){
         d = read.table(v$ssfileInput$datapath, sep=",", header = T)
       }
@@ -815,7 +815,7 @@ shinyServer(function(input, output, session) {
           d = d %>% select(one_of(kept_cols$col))
         }
       }else if (!is.null(v$columnCorrectionInput)){
-        n = read.xlsx(v$columnCorrectionInput$datapath, 1)[,1:2]
+        n = read_excel(v$columnCorrectionInput$datapath, 1)[,1:2]
         colnames(n) = c("row", "marker")
         n = n %>% mutate(row=as.character(row))
         
@@ -1010,7 +1010,7 @@ shinyServer(function(input, output, session) {
               splits = unlist(strsplit(fn, "\\."))
               ext = splits[length(splits)]
               if (ext=="xlsx" | ext=="xls"){
-                d = read.xlsx(paste0(p, "/", fn), 1)
+                d = read_excel(paste0(p, "/", fn), 1)
               }else if (ext=="csv"){
                 d = read.table(paste0(p, "/", fn), sep=",", header = T)
               }
@@ -1035,7 +1035,7 @@ shinyServer(function(input, output, session) {
                   d = d %>% select(one_of(kept_cols$col))
                 }
               }else if (!is.null(v$columnCorrectionInput)){
-                n = read.xlsx(v$columnCorrectionInput$datapath, 1)[,1:2]
+                n = read_excel(v$columnCorrectionInput$datapath, 1)[,1:2]
                 n = n %>% subset(!is.na(marker))
                 colnames(n) = c("row", "marker")
                 n = n %>% mutate(row=as.character(row))
@@ -1149,7 +1149,7 @@ shinyServer(function(input, output, session) {
                 splits = unlist(strsplit(fn, "\\."))
                 ext = splits[length(splits)]
                 if (ext=="xlsx" | ext=="xls"){
-                  d = read.xlsx(paste0(p, "/", fn), 1)
+                  d = read_excel(paste0(p, "/", fn), 1)
                 }else if (ext=="csv"){
                   d = read.table(paste0(p, "/", fn), sep=",", header = T)
                 }
@@ -1175,7 +1175,7 @@ shinyServer(function(input, output, session) {
                     d = d %>% select(one_of(kept_cols$col))
                   }
                 }else if (!is.null(v$columnCorrectionInput)){
-                  n = read.xlsx(v$columnCorrectionInput$datapath, 1)[,1:2]
+                  n = read_excel(v$columnCorrectionInput$datapath, 1)[,1:2]
                   colnames(n) = c("row", "marker")
                   n = n %>% mutate(row=as.character(row))
                   

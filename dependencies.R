@@ -10,7 +10,7 @@
 
 
 pkgsR  =  c("shiny",
-            "xlsx",
+            "readxl",
             "tidyr",
             "DT",
             "RColorBrewer",
