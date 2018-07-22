@@ -24,7 +24,7 @@ shinyUI(
         menuItem("Clustering", tabName = "hierclus", icon=icon("area-chart")),
         menuItem("Node identification", tabName = "postproc", icon=icon("eye")),
         menuItem("Node push", tabName = "nodeid", icon=icon("cloud-upload")),
-        menuItem("MEM score", tabName = "nodeid", icon=icon("fa-audible"))
+        menuItem("MEM score", tabName = "nodeid", icon=icon("fab fa-audible"))
         #menuItem("Contact us", tabName = "contact", icon=icon("envelope-o"))
       )
     ), ## End sidebar
