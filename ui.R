@@ -23,7 +23,8 @@ shinyUI(
         menuItem("Manual input mode", tabName = "mimode", icon=icon("file")),
         menuItem("Clustering", tabName = "hierclus", icon=icon("area-chart")),
         menuItem("Node identification", tabName = "postproc", icon=icon("eye")),
-        menuItem("Node push", tabName = "nodeid", icon=icon("cloud-upload"))
+        menuItem("Node push", tabName = "nodeid", icon=icon("cloud-upload")),
+        menuItem("MEM score", tabName = "nodeid", icon=icon("audible"))
         #menuItem("Contact us", tabName = "contact", icon=icon("envelope-o"))
       )
     ), ## End sidebar
