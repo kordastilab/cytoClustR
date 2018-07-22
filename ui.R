@@ -24,7 +24,7 @@ shinyUI(
         menuItem("Clustering", tabName = "hierclus", icon=icon("area-chart")),
         menuItem("Node identification", tabName = "postproc", icon=icon("eye")),
         menuItem("Node push", tabName = "nodeid", icon=icon("cloud-upload")),
-        menuItem("MEM score", tabName = "nodeid", icon=icon("fab fa-audible"))
+        menuItem("MEM score", tabName = "memscore", icon=icon("fab fa-audible"))
         #menuItem("Contact us", tabName = "contact", icon=icon("envelope-o"))
       )
     ), ## End sidebar
@@ -312,7 +312,18 @@ shinyUI(
                 br(),
                 rHandsontableOutput("nodeGroupstb", width = "100%", height = "100%")
 
-        )
+        ),
+        
+        tabItem(tabName = "memscore",
+                tabsetPanel(
+                  tabPanel("MEM values"
+                           
+                  ),
+                  
+                  tabPanel("Heatmap"
+                  )
+                )
+        )## End of MEM
 
 
 
