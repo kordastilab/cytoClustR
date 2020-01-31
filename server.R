@@ -141,6 +141,7 @@ shinyServer(function(input, output, session) {
     if(is.null(v$all_spades)){
       return()
     }else{
+      v$all_spades <- v$all_spades[,colSums(is.na(v$all_spades))<nrow(v$all_spades)]
       rhandsontable(v$all_spades) %>%
         hot_table(highlightCol = TRUE, highlightRow = TRUE)
     }
@@ -167,7 +168,9 @@ shinyServer(function(input, output, session) {
     session$sendCustomMessage(type='jsCode', list(value = js_string))
     
     ## Get the spade object (take the first if none is TRUE)
+    #browser()
     as = hot_to_r(input$all_spades)
+    
     if(sum(as$Pick)==0){
       spade_selected = hot_to_r(input$all_spades) %>% slice(1)
     }else if (sum(as$Pick)>1) {
