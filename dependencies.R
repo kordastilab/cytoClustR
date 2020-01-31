@@ -43,22 +43,24 @@ for (pkgR in pkgsR)
     library(pkgR, character.only = TRUE, quietly = TRUE)
   }
 
-source("http://bioconductor.org/biocLite.R")
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
 
 pkgs  =  c("ComplexHeatmap")
 for (pkg in pkgs) 
   if (!pkg %in% rownames(installed.packages())) { 
-    biocLite(pkg)
+    BiocManager::install(pkg)
     library(pkg, character.only = TRUE, quietly = TRUE)
   } else { 
     library(pkg, character.only = TRUE, quietly = TRUE)
   }
 
 #update.packages(repos=biocinstallRepos(), ask=FALSE)
+install.packages("shinyTable-master/", repos = NULL, type="source")
 
 ## Install github repos
 rm(pkg,pkgR,pkgs,pkgsR)
-gits = c("trestletech/shinyTable",
+gits = c(
          "jrowen/rhandsontable",
          "ayayron/shinydnd")
 for(git in gits){
